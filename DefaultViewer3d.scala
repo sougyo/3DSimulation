@@ -19,10 +19,6 @@ class DefaultViewer3d extends Viewer3d {
       new Color3f(1.0f, 1.0f, 1.0f),
       new Point3f(2.0f, 2.0f, 2.0f),
       new Point3f(0.8f, 0.0f, 0.0f))  
-  private val light2 = new PointLight(true,
-      new Color3f(1.0f, 1.0f, 1.0f),
-      new Point3f(-2.0f, -2.0f, -2.0f),
-      new Point3f(0.8f, 0.0f, 0.0f));
   private var root:BranchGroup = initRoot()
 
   universe.getViewingPlatform().setNominalViewingTransform()
@@ -32,11 +28,9 @@ class DefaultViewer3d extends Viewer3d {
   scene.setCapability(Group.ALLOW_CHILDREN_WRITE)
   scene.setCapability(Group.ALLOW_CHILDREN_EXTEND)
   scene.addChild(root)
-  
+
   light1.setInfluencingBounds(new BoundingSphere(new Point3d(), 100.0));
-  light2.setInfluencingBounds(new BoundingSphere(new Point3d(), 100.0));
   scene.addChild(light1);
-  scene.addChild(light2);
 
   universe.addBranchGraph(scene);
 
