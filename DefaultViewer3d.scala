@@ -15,24 +15,28 @@ class DefaultViewer3d extends Viewer3d {
   private val universe = new SimpleUniverse(canvas)
   private val orbit = new OrbitBehavior(canvas, OrbitBehavior.REVERSE_ALL)
   private val scene = new BranchGroup()
-  private val light1 = new PointLight(true,
-      new Color3f(1.0f, 1.0f, 1.0f),
-      new Point3f(2.0f, 2.0f, 2.0f),
-      new Point3f(0.8f, 0.0f, 0.0f))  
   private var root:BranchGroup = initRoot()
 
-  universe.getViewingPlatform().setNominalViewingTransform()
   orbit.setSchedulingBounds(new BoundingSphere(new Point3d(0, 0, 0), 100.0))
+
+  universe.getViewingPlatform().setNominalViewingTransform()
   universe.getViewingPlatform().setViewPlatformBehavior(orbit)
 
   scene.setCapability(Group.ALLOW_CHILDREN_WRITE)
   scene.setCapability(Group.ALLOW_CHILDREN_EXTEND)
   scene.addChild(root)
-
-  light1.setInfluencingBounds(new BoundingSphere(new Point3d(), 100.0));
-  scene.addChild(light1);
+  scene.addChild(defaultLight());
 
   universe.addBranchGraph(scene);
+
+  private def defaultLight():PointLight = {
+    val light = new PointLight(true,
+      new Color3f(1.0f, 1.0f, 1.0f),
+      new Point3f(2.0f, 2.0f, 2.0f),
+      new Point3f(0.8f, 0.0f, 0.0f))
+    light.setInfluencingBounds(new BoundingSphere(new Point3d(), 100.0));
+    return light
+  }
 
   private def initRoot():BranchGroup = {
     val root = new BranchGroup()
