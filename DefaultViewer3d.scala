@@ -25,20 +25,20 @@ class DefaultViewer3d extends Viewer3d {
   scene.setCapability(Group.ALLOW_CHILDREN_WRITE)
   scene.setCapability(Group.ALLOW_CHILDREN_EXTEND)
   scene.addChild(root)
-  scene.addChild(defaultLight());
+  scene.addChild(defaultLight())
 
-  universe.addBranchGraph(scene);
+  universe.addBranchGraph(scene)
 
-  private def defaultLight():PointLight = {
+  private def defaultLight(): PointLight = {
     val light = new PointLight(true,
       new Color3f(1.0f, 1.0f, 1.0f),
       new Point3f(3.0f, 3.0f, 3.0f),
       new Point3f(0.8f, 0.0f, 0.0f))
-    light.setInfluencingBounds(new BoundingSphere(new Point3d(), 100.0));
+    light.setInfluencingBounds(new BoundingSphere(new Point3d(), 100.0))
     return light
   }
 
-  private def initRoot():BranchGroup = {
+  private def initRoot(): BranchGroup = {
     val root = new BranchGroup()
     root.setCapability(Group.ALLOW_CHILDREN_EXTEND)
     root.setCapability(Group.ALLOW_CHILDREN_WRITE)

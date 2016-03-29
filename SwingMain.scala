@@ -1,6 +1,5 @@
 import javax.swing.JPanel
 import javax.swing.JFrame
-import com.sun.j3d.utils.geometry.Sphere
 import com.sun.j3d.utils.geometry.Primitive
 
 object SwingMain {
@@ -15,7 +14,9 @@ object SwingMain {
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
     frame.setVisible(true)
     
-    val sphere = new Sphere(1.0f, Primitive.GENERATE_NORMALS, 500)
-    viewer.addNode(sphere)
+    val pendulum = new Pendulum
+    viewer.addNode(pendulum.getComponent())
+    
+    //pendulum.setPosition(5, 3, 0)
   }
 }
