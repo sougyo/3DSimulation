@@ -1,5 +1,3 @@
-
-
 import scala.util.control.Breaks
 
 object JacobiEllipticFunction {
@@ -28,9 +26,9 @@ object JacobiEllipticFunction {
   
   private def cal_sncndn(_t: Double, _emc: Double) = {
     val EPSILON = 0.0003d
-    var (t, emc) = (_t, _emc)
+    var (t, emc)     = (_t, _emc)
     var (sn, cn, dn) = (0d, 0d, 1d)
-    var (a, c, d) = (1d, 0d, 0d)
+    var (a, c, d)    = (1d, 0d, 0d)
     val em = new Array[Double](14)
     val en = new Array[Double](14)
     var l = 0
