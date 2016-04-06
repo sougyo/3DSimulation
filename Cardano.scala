@@ -47,4 +47,7 @@ object Cardano {
 
 case class CubicEquationRoot(r1: Complex, r2: Complex, r3: Complex) {
   def this(r1: Complex, r2: Complex) = this(r1, r2, r2)
+  
+  def isReal() = r1.im == 0 && r2.im == 0 && r3.im == 0
+
 }
