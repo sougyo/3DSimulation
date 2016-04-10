@@ -10,9 +10,10 @@ object EmspSolutionFactory {
     val root = Cardano.solve(1.0, -h/(g*m), -a*a, a*a*h/(g*m)-l*l/(2*g*m*m))
     
     if (!root.isReal())
-      return null
-    
-    val realRoot = (root.r1.re, root.r2.re, root.r3.re)
+      return null  
+      
+    val arr = Array(root.r1.re, root.r2.re, root.r3.re).sorted
+    val realRoot = (arr(0), arr(1), arr(2))
     
     val z      = new Z(realRoot, spParam, emParam.delta)
     val dotZ   = new DotZ(z, realRoot, spParam)
@@ -109,7 +110,10 @@ class Phi(dotPhi: DotPhi, dotZ: DotZ, r: R, emParam: EmParam, phi0: Double) {
 }
 
 case class SpCoodinate(t: Double, r: Double, phi: Double, z: Double,
-                         dotR: Double, dotPhi: Double, dotZ: Double)
+                         dotR: Double, dotPhi: Double, dotZ: Double) {
+  def getX() = r * Math.cos(phi)
+  def getY() = r * Math.sin(phi)
+}
 
 case class SpParam(a: Double, m: Double, g: Double)
 

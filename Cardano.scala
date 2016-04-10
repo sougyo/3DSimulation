@@ -6,9 +6,9 @@
 object Cardano {
   
   def solve(_a: Double, _b: Double, _c: Double, _d: Double): CubicEquationRoot = {
-    val (b, c, d) = (_b/(3*_a), _c/_a, _d/_a)
-    val (p, q) = (b*b-c/3, (b*(c-2*b*b)-d)/2)
-    val a = q*q-p*p*p
+    val (b, c, d) = (_b / (3 * _a), _c / _a, _d / _a)
+    val (p, q) = (b * b - c / 3, (b * (c - 2 * b * b) - d) / 2)
+    val a = q * q - p * p * p
     
     if (a == 0) {
       val r = cuberoot(q)

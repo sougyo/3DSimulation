@@ -34,6 +34,7 @@ class Pendulum {
   private def makeSphere(): Node = {
     val (translation, transformGroup) = transformPair()
     translation.set(new Vector3d(0.0, 0.0, 1.0))
+    transformGroup.setTransform(translation)
     transformGroup.addChild(new Sphere(0.07f, Primitive.GENERATE_NORMALS, 50))
     return transformGroup
   }
