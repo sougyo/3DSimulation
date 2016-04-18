@@ -47,8 +47,6 @@ class DefaultViewer3d extends Viewer3d {
   }
   
   override def addNode(node: Node) {
-    if (node == null)
-      return
     val b = new BranchGroup()
     b.addChild(node)
     root.addChild(b)

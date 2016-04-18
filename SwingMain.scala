@@ -19,13 +19,14 @@ object SwingMain {
     
     val task = new PendulumAnimationTimerTask
     viewer.addNode(task.pendulum.getComponent())
+    viewer.addNode(task.lineManager1.node.node)
+    viewer.addNode(task.lineManager2.node.node)
+    viewer.addNode(task.lineManager3.node.node)
+
     
-    val timer = new AnimationTimer(10, 3, task)
+    val timer = new AnimationTimer(50, 3, task)
     viewer.addNode(timer)
     val color = new Color3f(1.0f, 1.0f, 1.0f)
-    viewer.addNode(LineFactory.makeLine(Array(
-        (new Point3d(0, 0, 0), color),
-        (new Point3d(0, 0, 2), color))))
     viewer.addNode(new TransparentSphere(0.7f, 1f, 50).sphere)
     viewer.addNode((new ConfigurationSpace).rootBranchGroup)
   }
